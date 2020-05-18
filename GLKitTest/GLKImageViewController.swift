@@ -11,7 +11,7 @@ import GLKit
 
 @available(*, deprecated, message: "ios13")//消除警告
 class GLKImgeViewController: UIViewController {
-
+    let imageName = "timg.jpeg"
     var glView:GLKView!
     var context:EAGLContext?
     var effect:GLKBaseEffect!
@@ -33,7 +33,7 @@ class GLKImgeViewController: UIViewController {
 
     func config(){
         //1创建GKLKView
-        glView = GLKView(frame: CGRect(x: 20, y: 100, width: UIScreen.main.bounds.width - 40, height: self.view.bounds.size.height - 200))
+        glView = GLKView(frame: CGRect(x: 10, y: 100, width: UIScreen.main.bounds.width - 20, height: self.view.bounds.size.height - 200))
         
         self.view.addSubview(glView)
         //2.设置Context
@@ -76,7 +76,7 @@ class GLKImgeViewController: UIViewController {
          纹理坐标系取值范围[0,1];原点是左下角(0,0);
          故而(0,0)是纹理图像的左下角, 点(1,1)是右上角.
          */
-        let vertexs:[GLfloat]  = [
+        var vertexs:[GLfloat]  = [
             0.5, -0.5, 0.0,    1.0, 0.0, //右下
             0.5, 0.5, 0.0,    1.0, 1.0, //右上
             -0.5, 0.5, 0.0,    0.0, 1.0, //左上
@@ -86,7 +86,25 @@ class GLKImgeViewController: UIViewController {
             -0.5, -0.5, 0.0,   0.0, 0.0, //左下
         ]
 
-        
+        var imageScale:(CGFloat,CGFloat) = (1,1)
+        if let image = UIImage(named: imageName)?.cgImage {
+            let width = image.width
+            let height = image.height
+                   
+            let scaleF = CGFloat(glView.frame.height)/CGFloat(glView.frame.width)
+            let scaleI = CGFloat(height)/CGFloat(width)
+                   
+            imageScale = scaleF>scaleI ? (1,scaleI/scaleF) : (scaleI/scaleF,1)
+        }
+        for (i,v) in vertexs.enumerated(){
+            if i % 5 == 0 {
+                vertexs[i] = v * 2 * Float(imageScale.0)
+            }
+            if i % 5 == 1{
+                vertexs[i] = v * 2 * Float(imageScale.1)
+            }
+
+        }
            /*
             顶点数组: 开发者可以选择设定函数指针，在调用绘制方法的时候，直接由内存传入顶点数据，也就是说这部分数据之前是存储在内存当中的，被称为顶点数组
             
@@ -129,12 +147,15 @@ class GLKImgeViewController: UIViewController {
     }
 
     func setImage() {
+        guard let name = imageName.split(separator: ".").first,
+            let type = imageName.split(separator: ".").last else {
+            return
+        }
         
-        guard  let imagePath = Bundle.main.path(forResource: "timg", ofType: "jpeg", inDirectory: nil),
+        guard  let imagePath = Bundle.main.path(forResource: String(name), ofType: String(type), inDirectory: nil),
                let image = UIImage(contentsOfFile: imagePath)?.cgImage
         else {
             return
-            
         }
         let texture = try? GLKTextureLoader.texture(with: image, options: [GLKTextureLoaderOriginBottomLeft:true,GLKTextureLoaderGrayscaleAsAlpha:true,GLKTextureLoaderApplyPremultiplication:true])
         effect = GLKBaseEffect()
@@ -160,7 +181,8 @@ extension GLKImgeViewController :GLKViewDelegate{
     
     func glkView(_ view: GLKView, drawIn rect: CGRect) {
         
-        glClear(GLbitfield(GL_COLOR_BUFFER_BIT))
+        glClear(GLbitfield(GL_COLOR_BUFFER_BIT) | GLbitfield(GL_DEPTH_BUFFER_BIT))
+        
         effect.prepareToDraw()
         
         glDrawArrays(GLenum(GL_TRIANGLES), 0, 6)

@@ -19,10 +19,9 @@ import GLKit
  当在竖屏上绘制横向内容时，你应该自己旋转内容，而不是使用CAEAGLLayer转换来旋转它。
 */
 
-let imageName = "timg.jpeg"
 @available(*, deprecated)
 class OESView: UIView {
-    
+    let imageName = "timg.jpeg"
     var glLayer:CAEAGLLayer!
     var context :EAGLContext!
     var colorRederBuffer = GLuint()
