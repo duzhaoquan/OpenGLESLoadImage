@@ -19,7 +19,7 @@ import GLKit
  当在竖屏上绘制横向内容时，你应该自己旋转内容，而不是使用CAEAGLLayer转换来旋转它。
 */
 
-let imageName = "image.jpg"
+let imageName = "timg.jpeg"
 @available(*, deprecated)
 class OESView: UIView {
     
@@ -28,7 +28,7 @@ class OESView: UIView {
     var colorRederBuffer = GLuint()
     var colorFrameBuffer = GLuint()
     
-    var imageScale:CGFloat = 1
+    var imageScale:(CGFloat,CGFloat) = (1,1)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -39,7 +39,7 @@ class OESView: UIView {
            let scaleF = CGFloat(frame.height)/CGFloat(frame.width)
            let scaleI = CGFloat(height)/CGFloat(width)
                   
-           imageScale = scaleF/scaleI > 1 ? scaleI/scaleF : scaleF/scaleI
+           imageScale = scaleF>scaleI ? (1,scaleI/scaleF) : (scaleI/scaleF,1)
        }
     }
     
@@ -163,19 +163,23 @@ class OESView: UIView {
         
         //5.设置顶点、纹理坐标
         var vertexs:[GLfloat]  = [
-             0.5, -0.5, -1.0,     1.0, 0.0,
-            -0.5, 0.5, -1.0,     0.0, 1.0,
-            -0.5, -0.5, -1.0,    0.0, 0.0,
+             0.5, -0.5,0,     1.0, 0.0,
+            -0.5, 0.5, 0,     0.0, 1.0,
+            -0.5, -0.5,0,    0.0, 0.0,
                    
-            0.5, 0.5, -1.0,      1.0, 1.0,
-            -0.5, 0.5, -1.0,     0.0, 1.0,
-            0.5, -0.5, -1.0,     1.0, 0.0,
+            0.5, 0.5, 0,      1.0, 1.0,
+            -0.5, 0.5,0,     0.0, 1.0,
+            0.5, -0.5,0,     1.0, 0.0,
         ]
         
         for (i,v) in vertexs.enumerated(){
-            if i % 5 == 0 || i % 5 == 1 || i % 5 == 2{
-                vertexs[i] = v * Float(imageScale)
+            if i % 5 == 0 {
+                vertexs[i] = v * 2 * Float(imageScale.0)
             }
+            if i % 5 == 1{
+                vertexs[i] = v * 2 * Float(imageScale.1)
+            }
+
         }
         
         
@@ -224,7 +228,7 @@ class OESView: UIView {
         //10.设置纹理采样器
         glUniform1i(glGetUniformLocation(program, "colorMap"), 0)
         //附加反转
-        rotateTextureImage(program: program)
+//        rotateTextureImage(program: program)
         //11.绘制
         glDrawArrays(GLenum(GL_TRIANGLES), 0, 6)
         //12.提交
@@ -251,7 +255,6 @@ class OESView: UIView {
         spriteContext?.translateBy(x: 0, y: CGFloat(height))//向下平移图片的高度
         spriteContext?.scaleBy(x: 1, y: -1)//反转图片
         
-        spriteContext?.scaleBy(x: imageScale, y: imageScale)
         spriteContext?.draw(image, in: CGRect(x: 0, y: 0, width: width, height: height))
         UIGraphicsEndImageContext()
         
@@ -359,6 +362,7 @@ class OESView: UIView {
      spriteContext?.translateBy(x: 0, y: CGFloat(height))//向下平移图片的高度
      spriteContext?.scaleBy(x: 1, y: -1)//反转图片
     //3.坐标反转
+     改变纹理坐标
     //4.顶点着色器中反转
      varyTextCoord = vec2(textCoordinate.x,1.0-textCoordinate.y);
     //5.片元着色器中反转
