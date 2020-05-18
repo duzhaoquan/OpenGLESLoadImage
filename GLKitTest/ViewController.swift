@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         
         view.addSubview(tableView!)
         
-        titles = ["GLKit load Image","GLKit Cube","Core Animation Cube","OESView"];
+        titles = ["GLKit load Image","GLKit Cube","Core Animation Cube","OpenGL ESView"];
         
     }
 
