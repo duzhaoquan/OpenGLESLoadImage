@@ -28,9 +28,14 @@ class GLKViewController: UIViewController{
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        let oesView = OESView(frame: CGRect(x: 10, y: 100, width: view.frame.width - 20, height: view.frame.height - 100))
+        let tempView = UIView(frame: CGRect(x:10, y: 100, width: view.frame.width - 20, height: view.frame.height - 200))
+        //Set the layer bounds to match the dimensions of the display.
+        //openGl ES layer所在的view.frame要等于父视图的bounds，否则图片位置错乱，所以添加一层layer
+        let oesView = OESView(frame: tempView.bounds)
         oesView.backgroundColor = UIColor.purple
-        view.addSubview(oesView)
+    
+        tempView.addSubview(oesView)
+        view.addSubview(tempView)
         
     }
  

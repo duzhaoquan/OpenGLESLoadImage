@@ -152,9 +152,9 @@ class GLKCubeViewController: UIViewController {
         if isPaused{
             return
         }
-        angle = (angle + 1) % 720
+        angle = (angle + 1) % 360
         
-        effect.transform.modelviewMatrix = GLKMatrix4MakeRotation(GLKMathDegreesToRadians(Float(angle/2)), 0.3, 1, 0.7)
+        effect.transform.modelviewMatrix = GLKMatrix4MakeRotation(GLKMathDegreesToRadians(Float(angle)), -0.3, -1, 0.7)
         
         glkVIew.display()
         
