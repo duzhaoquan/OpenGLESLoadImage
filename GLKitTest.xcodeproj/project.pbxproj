@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6009C0C12478CD3A0036D14E /* GLSLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6009C0C02478CD3A0036D14E /* GLSLView.swift */; };
+		6009C0C32478F65C0036D14E /* lightVer.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 6009C0C22478F65C0036D14E /* lightVer.vsh */; };
+		6009C0C52478F68D0036D14E /* lightFrag.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 6009C0C42478F68D0036D14E /* lightFrag.fsh */; };
 		6010D2A5246E22A9001F01AF /* CACubeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6010D2A4246E22A9001F01AF /* CACubeViewController.swift */; };
 		6010D2A8246E672A001F01AF /* timg-2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 6010D2A7246E672A001F01AF /* timg-2.jpeg */; };
 		6010D2AA246E7F3E001F01AF /* OESView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6010D2A9246E7F3E001F01AF /* OESView.swift */; };
 		6010D2AF246FC748001F01AF /* shaderv.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 6010D2AE246FC748001F01AF /* shaderv.vsh */; };
 		6010D2B1246FC769001F01AF /* shaderf.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 6010D2B0246FC769001F01AF /* shaderf.fsh */; };
+		60260690247A3EC9008FCB44 /* jimu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6026068F247A3EC8008FCB44 /* jimu.jpg */; };
+		60260692247A3FA9008FCB44 /* hulu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 60260691247A3FA8008FCB44 /* hulu.jpg */; };
 		602CC756246CCD7100338116 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602CC755246CCD7100338116 /* AppDelegate.swift */; };
 		602CC758246CCD7100338116 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602CC757246CCD7100338116 /* SceneDelegate.swift */; };
 		602CC75A246CCD7100338116 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602CC759246CCD7100338116 /* ViewController.swift */; };
@@ -23,14 +28,26 @@
 		602CC770246D372000338116 /* timg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 602CC76F246D372000338116 /* timg.jpeg */; };
 		602CC772246D4FA500338116 /* GLKCubeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602CC771246D4FA500338116 /* GLKCubeViewController.swift */; };
 		602CC774246D4FC800338116 /* GLKImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602CC773246D4FC800338116 /* GLKImageViewController.swift */; };
+		605C086B247647B700B5A0A6 /* Rectangular4View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605C086A247647B700B5A0A6 /* Rectangular4View.swift */; };
+		605C086D2476491E00B5A0A6 /* DQShaderUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605C086C2476491E00B5A0A6 /* DQShaderUtil.swift */; };
+		605C086F247655E800B5A0A6 /* OGLESView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605C086E247655E800B5A0A6 /* OGLESView.swift */; };
+		605C087224768DED00B5A0A6 /* ver.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 605C087124768DED00B5A0A6 /* ver.vsh */; };
+		605C087424768E0A00B5A0A6 /* frag.sh in Resources */ = {isa = PBXBuildFile; fileRef = 605C087324768E0A00B5A0A6 /* frag.sh */; };
+		60C811402477B42B00FB9899 /* GLKNormalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60C8113F2477B42B00FB9899 /* GLKNormalViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6009C0C02478CD3A0036D14E /* GLSLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLSLView.swift; sourceTree = "<group>"; };
+		6009C0C22478F65C0036D14E /* lightVer.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = lightVer.vsh; sourceTree = "<group>"; };
+		6009C0C42478F68D0036D14E /* lightFrag.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = lightFrag.fsh; sourceTree = "<group>"; };
+		6009C0CA24792C4C0036D14E /* GLKitTest-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GLKitTest-Bridging-Header.h"; sourceTree = "<group>"; };
 		6010D2A4246E22A9001F01AF /* CACubeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CACubeViewController.swift; sourceTree = "<group>"; };
 		6010D2A7246E672A001F01AF /* timg-2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "timg-2.jpeg"; sourceTree = "<group>"; };
 		6010D2A9246E7F3E001F01AF /* OESView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OESView.swift; sourceTree = "<group>"; };
 		6010D2AE246FC748001F01AF /* shaderv.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shaderv.vsh; sourceTree = "<group>"; };
 		6010D2B0246FC769001F01AF /* shaderf.fsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = shaderf.fsh; sourceTree = "<group>"; };
+		6026068F247A3EC8008FCB44 /* jimu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jimu.jpg; sourceTree = "<group>"; };
+		60260691247A3FA8008FCB44 /* hulu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = hulu.jpg; sourceTree = "<group>"; };
 		602CC752246CCD7100338116 /* GLKitTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GLKitTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		602CC755246CCD7100338116 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		602CC757246CCD7100338116 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,6 +61,12 @@
 		602CC76F246D372000338116 /* timg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = timg.jpeg; sourceTree = "<group>"; };
 		602CC771246D4FA500338116 /* GLKCubeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLKCubeViewController.swift; sourceTree = "<group>"; };
 		602CC773246D4FC800338116 /* GLKImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLKImageViewController.swift; sourceTree = "<group>"; };
+		605C086A247647B700B5A0A6 /* Rectangular4View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rectangular4View.swift; sourceTree = "<group>"; };
+		605C086C2476491E00B5A0A6 /* DQShaderUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DQShaderUtil.swift; sourceTree = "<group>"; };
+		605C086E247655E800B5A0A6 /* OGLESView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OGLESView.swift; sourceTree = "<group>"; };
+		605C087124768DED00B5A0A6 /* ver.vsh */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.glsl; path = ver.vsh; sourceTree = "<group>"; };
+		605C087324768E0A00B5A0A6 /* frag.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = frag.sh; sourceTree = "<group>"; };
+		60C8113F2477B42B00FB9899 /* GLKNormalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLKNormalViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,20 +102,32 @@
 				602CC755246CCD7100338116 /* AppDelegate.swift */,
 				602CC757246CCD7100338116 /* SceneDelegate.swift */,
 				602CC759246CCD7100338116 /* ViewController.swift */,
+				605C086C2476491E00B5A0A6 /* DQShaderUtil.swift */,
+				605C086E247655E800B5A0A6 /* OGLESView.swift */,
 				602CC76F246D372000338116 /* timg.jpeg */,
 				6010D2A7246E672A001F01AF /* timg-2.jpeg */,
 				602CC76B246CF15800338116 /* image.jpg */,
+				6026068F247A3EC8008FCB44 /* jimu.jpg */,
+				60260691247A3FA8008FCB44 /* hulu.jpg */,
 				602CC769246CEDDB00338116 /* GLKViewController.swift */,
 				6010D2A9246E7F3E001F01AF /* OESView.swift */,
+				605C086A247647B700B5A0A6 /* Rectangular4View.swift */,
+				6009C0C02478CD3A0036D14E /* GLSLView.swift */,
+				6009C0C22478F65C0036D14E /* lightVer.vsh */,
+				6009C0C42478F68D0036D14E /* lightFrag.fsh */,
+				605C087124768DED00B5A0A6 /* ver.vsh */,
+				605C087324768E0A00B5A0A6 /* frag.sh */,
 				6010D2AE246FC748001F01AF /* shaderv.vsh */,
 				6010D2B0246FC769001F01AF /* shaderf.fsh */,
 				602CC773246D4FC800338116 /* GLKImageViewController.swift */,
 				602CC771246D4FA500338116 /* GLKCubeViewController.swift */,
+				60C8113F2477B42B00FB9899 /* GLKNormalViewController.swift */,
 				6010D2A4246E22A9001F01AF /* CACubeViewController.swift */,
 				602CC75B246CCD7100338116 /* Main.storyboard */,
 				602CC75E246CCD7700338116 /* Assets.xcassets */,
 				602CC760246CCD7700338116 /* LaunchScreen.storyboard */,
 				602CC763246CCD7700338116 /* Info.plist */,
+				6009C0CA24792C4C0036D14E /* GLKitTest-Bridging-Header.h */,
 			);
 			path = GLKitTest;
 			sourceTree = "<group>";
@@ -129,6 +164,7 @@
 				TargetAttributes = {
 					602CC751246CCD7100338116 = {
 						CreatedOnToolsVersion = 11.4;
+						LastSwiftMigration = 1140;
 					};
 				};
 			};
@@ -155,14 +191,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				605C087424768E0A00B5A0A6 /* frag.sh in Resources */,
+				60260690247A3EC9008FCB44 /* jimu.jpg in Resources */,
 				602CC762246CCD7700338116 /* LaunchScreen.storyboard in Resources */,
 				602CC76C246CF15900338116 /* image.jpg in Resources */,
+				60260692247A3FA9008FCB44 /* hulu.jpg in Resources */,
 				602CC770246D372000338116 /* timg.jpeg in Resources */,
+				605C087224768DED00B5A0A6 /* ver.vsh in Resources */,
 				6010D2AF246FC748001F01AF /* shaderv.vsh in Resources */,
 				602CC75F246CCD7700338116 /* Assets.xcassets in Resources */,
 				602CC75D246CCD7100338116 /* Main.storyboard in Resources */,
 				6010D2A8246E672A001F01AF /* timg-2.jpeg in Resources */,
+				6009C0C52478F68D0036D14E /* lightFrag.fsh in Resources */,
 				6010D2B1246FC769001F01AF /* shaderf.fsh in Resources */,
+				6009C0C32478F65C0036D14E /* lightVer.vsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,10 +218,15 @@
 				602CC75A246CCD7100338116 /* ViewController.swift in Sources */,
 				602CC756246CCD7100338116 /* AppDelegate.swift in Sources */,
 				6010D2AA246E7F3E001F01AF /* OESView.swift in Sources */,
+				605C086D2476491E00B5A0A6 /* DQShaderUtil.swift in Sources */,
+				605C086B247647B700B5A0A6 /* Rectangular4View.swift in Sources */,
 				602CC772246D4FA500338116 /* GLKCubeViewController.swift in Sources */,
+				6009C0C12478CD3A0036D14E /* GLSLView.swift in Sources */,
 				602CC774246D4FC800338116 /* GLKImageViewController.swift in Sources */,
 				602CC758246CCD7100338116 /* SceneDelegate.swift in Sources */,
+				605C086F247655E800B5A0A6 /* OGLESView.swift in Sources */,
 				6010D2A5246E22A9001F01AF /* CACubeViewController.swift in Sources */,
+				60C811402477B42B00FB9899 /* GLKNormalViewController.swift in Sources */,
 				602CC76A246CEDDB00338116 /* GLKViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,6 +371,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6245M2ZZ7W;
 				INFOPLIST_FILE = GLKitTest/Info.plist;
@@ -332,8 +380,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.banjiuxiaodian.GLKitTest1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.banjiuxiaodian.GLKitTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GLKitTest/GLKitTest-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -343,6 +393,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6245M2ZZ7W;
 				INFOPLIST_FILE = GLKitTest/Info.plist;
@@ -351,8 +402,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.banjiuxiaodian.GLKitTest1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.banjiuxiaodian.GLKitTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GLKitTest/GLKitTest-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

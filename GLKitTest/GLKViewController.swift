@@ -21,25 +21,116 @@ import UIKit
  When drawing landscape content on a portrait display, you should rotate the content yourself rather than using the CAEAGLLayer transform to rotate it.
  */
 
+enum ESType:Int {
+    case iamge = 1
+    case rectangulr
+    case light
+    
+}
 @available(*, deprecated, message: "ios13")
 class GLKViewController: UIViewController{
+    
+    var type:ESType = .iamge
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         
         let tempView = UIView(frame: CGRect(x:10, y: 100, width: view.frame.width - 20, height: view.frame.height - 200))
-        //Set the layer bounds to match the dimensions of the display.
-        //openGl ES layer所在的view.frame要等于父视图的bounds，否则图片位置错乱，所以添加一层layer
-        let oesView = OESView(frame: tempView.bounds)
-        oesView.backgroundColor = UIColor.purple
-    
-        tempView.addSubview(oesView)
         view.addSubview(tempView)
+        
+        switch type {
+        case .iamge:
+            //Set the layer bounds to match the dimensions of the display.
+            //openGl ES layer所在的view.frame要等于父视图的bounds，否则图片位置错乱，所以添加一层layer
+            let oesView = OESView(frame: tempView.bounds)
+            oesView.backgroundColor = UIColor.purple
+            tempView.addSubview(oesView)
+        case .rectangulr:
+            let oesView = Rectangular4View(frame: tempView.bounds)
+            oesView.tag = 100
+            oesView.backgroundColor = UIColor.purple
+            tempView.addSubview(oesView)
+            addbutton()
+        case .light:
+            let oesView = GLSLView(frame: tempView.bounds)
+            oesView.backgroundColor = UIColor.purple
+            tempView.addSubview(oesView)
+        }
+        
+        
         
     }
  
+    @objc func buttonClick(btn: UIButton){
+        guard let recView = view.viewWithTag(100) as? Rectangular4View else{
+            return
+        }
+        
+        switch btn.tag {
+        case 101:
+            recView.bX = !recView.bX
+        case 102:
+            recView.bY = !recView.bY
+        case 103:
+            recView.bZ = !recView.bZ
+        default:
+            print("")
+        }
+        recView.xDegree *= recView.bX ? 1 : 0
+        
+        recView.yDegree *= recView.bY ? 1 : 0
+        recView.zDegree *= recView.bZ ? 1 : 0
+        
+    }
+    
+    func addbutton() {
+        let buttonX = UIButton(frame: CGRect.zero)
+        buttonX.tag = 101
+        buttonX.setTitle("rotateX", for: UIControl.State.normal)
+        buttonX.addTarget(self, action: #selector(buttonClick(btn:)), for: UIControl.Event.touchUpInside)
+        buttonX.backgroundColor = UIColor.gray
+        let buttonY = UIButton(frame: CGRect.zero)
+        buttonY.tag = 102
+        buttonY.setTitle("rotateY", for: UIControl.State.normal)
+        buttonY.addTarget(self, action: #selector(buttonClick(btn:)), for: UIControl.Event.touchUpInside)
+        buttonY.backgroundColor = UIColor.gray
+        
+        let buttonZ = UIButton(frame: CGRect.zero)
+        buttonZ.tag = 103
+        buttonZ.setTitle("rotateZ", for: UIControl.State.normal)
+        buttonZ.addTarget(self, action: #selector(buttonClick(btn:)), for: UIControl.Event.touchUpInside)
+        buttonZ.backgroundColor = UIColor.gray
+        
+        view.addSubview(buttonX)
+        view.addSubview(buttonY)
+        view.addSubview(buttonZ)
+        
+        buttonX.translatesAutoresizingMaskIntoConstraints = false
+        buttonY.translatesAutoresizingMaskIntoConstraints = false
+        buttonZ.translatesAutoresizingMaskIntoConstraints = false
+
+        buttonY.widthAnchor.constraint(equalTo: buttonX.widthAnchor).isActive = true
+        buttonZ.widthAnchor.constraint(equalTo: buttonX.widthAnchor).isActive = true
+
+        buttonX.leftAnchor.constraint(equalTo: view.leftAnchor,constant: 20).isActive = true
+        buttonX.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40).isActive = true
+        buttonX.heightAnchor.constraint(equalToConstant: 60).isActive = true
+
+        buttonY.leftAnchor.constraint(equalTo: buttonX.rightAnchor,constant: 10).isActive = true
+        buttonY.topAnchor.constraint(equalTo: buttonX.topAnchor).isActive = true
+        buttonY.bottomAnchor.constraint(equalTo: buttonX.bottomAnchor).isActive = true
+
+        buttonZ.leftAnchor.constraint(equalTo: buttonY.rightAnchor,constant: 10).isActive = true
+        buttonZ.topAnchor.constraint(equalTo: buttonX.topAnchor).isActive = true
+        buttonZ.bottomAnchor.constraint(equalTo: buttonX.bottomAnchor).isActive = true
+        buttonZ.rightAnchor.constraint(equalTo: view.rightAnchor,constant: -20).isActive = true
+    }
+    
     func testImageDrow(){
+        
+        
+        
         let imageView = UIImageView(frame: CGRect(x: 0, y: 300, width: 200, height: 300))
         imageView.backgroundColor = .red
         view.addSubview(imageView)
