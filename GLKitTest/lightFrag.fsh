@@ -9,7 +9,9 @@ uniform vec3 lightPo;
 uniform vec3 viewPo;
 uniform sampler2D Texture;
 uniform sampler2D specularTexture;
-
+uniform sampler2D myTexture1;
+uniform sampler2D myTexture2;
+uniform sampler2D myTexture3;
 in vec2 outTexCoord;
 in vec3 outNormal;
 in vec3 FragPo;
@@ -55,7 +57,7 @@ void pointLight(){
     vec3 res = (ambient + diffuse + specular)*lightWeakPara;
 
     //最终输出的颜色
-    FragColor = vec4(texture(specularTexture,outTexCoord).rgb,1.0);
+    FragColor = vec4(res,1.0);
 
 }
 
@@ -169,6 +171,6 @@ void main()
      pointLight();
     //平行光版本
 //    parallelLight();
-//    FragColor = texture(Texture,outTexCoord);
+
     
 }

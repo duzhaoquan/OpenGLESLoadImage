@@ -82,7 +82,7 @@ class ViewController: UIViewController {
         
         view.addSubview(tableView!)
         
-        titles = ["GLKit load Image","GLKit Cube","Core Animation Cube","ESView load image","ESView load rectanglar","GLKnormal","esLight"];
+        titles = ["GLKit load Image","GLKit Cube","Core Animation Cube","ESView load image","ESView load rectanglar","GLKnormal","esLight","emitter"];
     }
     @objc func buttonClick(btn: UIButton){
         
@@ -145,7 +145,7 @@ extension ViewController :UITableViewDelegate,UITableViewDataSource{
             twoVC = GLKViewController()
             (twoVC as! GLKViewController).type = .light
         case 7:
-            twoVC = GLKViewController()
+            twoVC = EmitterViewController()
             
         default:
             twoVC = GLKImgeViewController()

@@ -29,8 +29,8 @@ class GLSLView: OGLESView {
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
-        displyLink.add(to: RunLoop.main, forMode: RunLoop.Mode.default)
-        displyLink.preferredFramesPerSecond = 1
+//        displyLink.add(to: RunLoop.main, forMode: RunLoop.Mode.default)
+//        displyLink.preferredFramesPerSecond = 1
     }
     
     required init?(coder: NSCoder) {
@@ -48,7 +48,7 @@ class GLSLView: OGLESView {
         let vertexs:[GLfloat]  = vertexsCube
     
         //6.处理定点数据（copy到缓冲区）
-        glBufferData(GLenum(GL_ARRAY_BUFFER), MemoryLayout<GLfloat>.size * vertexs.count, vertexs, GLenum(GL_DYNAMIC_DRAW))
+        glBufferData(GLenum(GL_ARRAY_BUFFER), MemoryLayout<GLfloat>.size * vertexs.count + 5, vertexs, GLenum(GL_DYNAMIC_DRAW))
         
         //7.将顶点数据通过Programe传递到顶点着色程序的position属性上
         glEnableVertexAttribArray(0)
@@ -66,6 +66,8 @@ class GLSLView: OGLESView {
         DQShaderUtil.setUpTextureImage(imageName: "hulu.jpg",map: true,texture: GLenum(GL_TEXTURE1))
 
         glUniform1i(glGetUniformLocation(program, "Material.specularTexture"), 0)
+        
+        
         
         //6.开始绘制
         renderLayer()
@@ -103,15 +105,54 @@ class GLSLView: OGLESView {
         glUniform3f(glGetUniformLocation(program,"viewPo"), viewPo.x, viewPo.y, viewPo.z)
 
         
-        glUniform3f(glGetUniformLocation(program, "lightPo"), 1.2, 1, 2)
+        glUniform3f(glGetUniformLocation(program, "lightPo"), 1.2, 2, 2)
 
+        
 
+        
+
+//        glEnable(GLenum(GL_cli))
         //11.绘制
-        glDrawArrays(GLenum(GL_TRIANGLES), 0, 36)
-        //12.提交
+        //glDrawArrays(GLenum(GL_TRIANGLES), 0, 36)
+        
+        DQShaderUtil.setUpTextureImage(imageName: "hulu.jpg",map: true,texture: GLenum(GL_TEXTURE0))
+        glUniform1i(glGetUniformLocation(program, "Material.Texture"), 0)
+        glDrawArrays(GLenum(GL_TRIANGLES), 0, 5)
+
+        
+        DQShaderUtil.setUpTextureImage(imageName: "zongzi",map: true,texture: GLenum(GL_TEXTURE0))
+        glUniform1i(glGetUniformLocation(program, "Material.Texture"), 0)
+        glDrawArrays(GLenum(GL_TRIANGLES), 6, 11)
+
+        
+        DQShaderUtil.setUpTextureImage(imageName: "jimu.jpg",map: true,texture: GLenum(GL_TEXTURE0))
+        glUniform1i(glGetUniformLocation(program, "Material.Texture"), 0)
+        glDrawArrays(GLenum(GL_TRIANGLES), 12, 17)
+
+        
+        DQShaderUtil.setUpTextureImage(imageName: "image.jpg",map: true,texture: GLenum(GL_TEXTURE0))
+        glUniform1i(glGetUniformLocation(program, "Material.Texture"), 0)
+        glDrawArrays(GLenum(GL_TRIANGLES), 18, 23)
+
+        
+        DQShaderUtil.setUpTextureImage(imageName: "timg.jpeg",map: true,texture: GLenum(GL_TEXTURE0))
+        glUniform1i(glGetUniformLocation(program, "Material.Texture"), 0)
+        glDrawArrays(GLenum(GL_TRIANGLES), 24, 29)
+
+        
+        DQShaderUtil.setUpTextureImage(imageName: "timg-2.jpeg",map: true,texture: GLenum(GL_TEXTURE0))
+        glUniform1i(glGetUniformLocation(program, "Material.Texture"), 0)
+        glDrawArrays(GLenum(GL_TRIANGLES), 30, 36)
+        
+        
+        glFinish()
         context.presentRenderbuffer(Int(GL_RENDERBUFFER))
         
         
+        //12.提交
+//        context.presentRenderbuffer(Int(GL_RENDERBUFFER))
+        
+       
         
     }
     
